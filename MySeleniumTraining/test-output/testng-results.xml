@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="29778" started-at="2014-10-30T12:25:21Z" finished-at="2014-10-30T12:25:51Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="29778" started-at="2014-10-30T12:25:21Z" finished-at="2014-10-30T12:25:51Z">
+      <class name="trainingselenium.MacysProfile$ExcelLogin">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:trainingselenium.MacysProfile$ExcelLogin@bd86fd3]" name="launchBrowser" is-config="true" duration-ms="6745" started-at="2014-10-30T17:55:21Z" finished-at="2014-10-30T17:55:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchBrowser -->
+        <test-method status="PASS" signature="testMacysProfile()[pri:0, instance:trainingselenium.MacysProfile$ExcelLogin@bd86fd3]" name="testMacysProfile" duration-ms="23023" started-at="2014-10-30T17:55:28Z" finished-at="2014-10-30T17:55:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testMacysProfile -->
+      </class> <!-- trainingselenium.MacysProfile$ExcelLogin -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

@@ -1,0 +1,70 @@
+package trainingselenium;
+
+import java.util.Set;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class IRCTC 
+{
+	private WebDriver driver;
+	 @Test
+		
+		public void testlogopresent() throws InterruptedException  
+		{
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			driver.get("https://www.irctc.co.in");
+			//Thread.sleep(2000);
+			String mainWindow=driver.getWindowHandle();
+			System.out.println(mainWindow);
+			driver.findElement(By.xpath("//div[@id='bluemenu']/ul/li[2]/a")).click();
+			Set<String> handler=driver.getWindowHandles();
+			for (String handlesname : handler) 
+			{
+				if(handlesname.contains(mainWindow))
+				{
+				driver.close();
+				}
+			driver.switchTo().window(handlesname);
+			String var=driver.getTitle();
+			System.out.println(var);
+			if(!handlesname.contains(mainWindow))
+			{
+			driver.close();
+			}
+			}
+			
+	        driver.quit();
+		}
+	 @Test
+		
+		public void testlogopresent1() throws InterruptedException  
+		{
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			driver.get("https://www.irctc.co.in");
+			//Thread.sleep(2000);
+			
+			driver.findElement(By.xpath("//div[@id='bluemenu']/ul/li[2]/a")).click();
+			String newwindowTitle = driver.getTitle();
+			String window=driver.getWindowHandle();
+			System.out.println("Parent Window:"+ window);
+			Set<String> handler=driver.getWindowHandles();
+			// Handler will have all the three window handles 
+			for (String handlesname : handler) 
+			{
+				System.out.println(driver.switchTo().window(handlesname).getTitle());
+			/*driver.switchTo().window(handlesname);
+			driver.switchTo().window(window);
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("//input[@id='origin']")).sendKeys("New Delhi, DEL");
+	        driver.findElement(By.xpath("//input[@id='destination']")).sendKeys("Jaipur, JAI");
+	        driver.findElement(By.xpath("EmailAddr")).sendKeys("prabhakar.alld@gmail.com");*/
+			
+	
+		}
+}}

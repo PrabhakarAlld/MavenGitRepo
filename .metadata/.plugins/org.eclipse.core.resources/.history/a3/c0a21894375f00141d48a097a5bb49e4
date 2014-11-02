@@ -1,0 +1,40 @@
+package trainingselenium;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class DataDrivenExcel 
+
+{
+
+	Excel excel =new Excel();
+	private WebDriver driver;
+	@Test
+	
+	public void testlogopresent() throws IOException 
+	{
+		excel.setExcel("C:\\Users\\admin\\Desktop\\OCT\\Test.xlsx","Sheet1");
+		System.out.println(excel.getCellvalue(1,1));
+	}
+@Test
+	
+	public void testgmail() throws IOException 
+	{
+	driver = new FirefoxDriver();
+	driver.manage().window().maximize();
+	driver.get("http://www.gmail.com");
+	excel.setExcel("C:\\Users\\admin\\Desktop\\OCT\\Test.xlsx","Sheet1");
+	//driver.findElement(By.xpath("//input[@id='Email']")).sendKeys(arg0)
+	String str= excel.getCellvalue1(1,1);
+	String str1= excel.getCellvalue1(1,2);
+	driver.findElement(By.xpath("//input[@id='Email']")).sendKeys(str);
+	driver.findElement(By.xpath("//input[@id='Passwd']")).sendKeys(str1);
+	driver.findElement(By.xpath("//input[@id='signIn']")).click();
+	  Thread.sleep(5000);
+	}
+	
+}

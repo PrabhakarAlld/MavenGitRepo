@@ -1,0 +1,101 @@
+package trainingselenium;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class IRCTC 
+{
+	private WebDriver driver;
+	 @Test
+		
+		public void testlogopresent() throws InterruptedException  
+		{
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			driver.get("https://www.irctc.co.in");
+			//Thread.sleep(2000);
+			String mainWindow=driver.getWindowHandle();
+			System.out.println(mainWindow);
+			driver.findElement(By.xpath("//div[@id='bluemenu']/ul/li[2]/a")).click();
+			Set<String> handler=driver.getWindowHandles();
+			for (String handlesname : handler) 
+			{
+				if(handlesname.contains(mainWindow))
+				{
+				driver.close();
+				}
+			driver.switchTo().window(handlesname);
+			String var=driver.getTitle();
+			System.out.println(var);
+			if(!handlesname.contains(mainWindow))
+			{
+			driver.close();
+			}
+			}
+			
+	        driver.quit();
+		}
+	 @Test
+		
+		public void testlogopresent1() throws InterruptedException  
+		{
+			driver = new FirefoxDriver();
+			driver.manage().window().maximize();
+			driver.get("https://www.irctc.co.in");
+			//Thread.sleep(2000);
+			
+			driver.findElement(By.xpath("//div[@id='bluemenu']/ul/li[2]/a")).click();
+			String newwindowTitle = driver.getTitle();
+			String window=driver.getWindowHandle();
+			System.out.println("Parent Window:"+ window);
+			Set<String> handler=driver.getWindowHandles();
+			// Handler will have all the three window handles 
+			for (String handlesname : handler) 
+			{
+				
+				String winTitle=driver.switchTo().window(handlesname).getTitle();
+				
+				if(winTitle.equals("IRCTC Online Passenger Reservation System"))
+				{
+					break;	
+				}
+			}
+			driver.findElement(By.xpath("//input[@id='origin']")).sendKeys("New Delhi");
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("//a[contains(text(),'New Delhi, DEL')]")).click();
+		    driver.findElement(By.xpath("//input[@id='destination']")).sendKeys("Jaipur");
+		    Thread.sleep(2000);
+	        driver.findElement(By.xpath("//a[contains(text(),'Jaipur, JAI')]")).click();
+	        driver.findElement(By.xpath("//div[@id='showdometic']/div[3]/div[2]/div[2]/img")).click();
+	        driver.findElement(By.xpath("//table/tbody/tr[3]/td[6]/a")).click();
+	        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	        driver.findElement(By.xpath("//div[@id='showdometic']/div[7]")).click();
+	        driver.manage().timeouts().implicitlyWait(1, TimeUnit.MINUTES);
+	        List<WebElement> inputs = driver.findElements(By.xpath("//div[@id='flightListResult']/div/table/tbody/tr[1]/td[1]"));
+	        
+	        System.out.println("Number of Flights " +inputs.size());
+	        String str=driver.findElement(By.xpath("//div[@id='flight_26230S']/table/tbody/tr[1]/td[1]")).getText();
+	        System.out.println(str);
+	       /* int listSize= inputs.size();
+	        
+	      
+	         String [] priceList= new String [listSize];
+	        for (int i=1; i <=listSize ;i++){
+	        	WebElement price = driver.findElement(By.xpath("//div[@id='flightListResult']/div["+i+"]/table/tbody/tr[1]/td[9]/table/tbody/tr/td/span"));
+	        	 // WebElement price = (WebElement) driver.findElements(By.xpath("//div[@id='flightListResult']/div["+i+"]/table/tbody/tr[1]/td[9]/table/tbody/tr/td/span "));
+	        	  priceList[i] = price.getText();
+	        	  
+	        }*/
+	        driver.quit();
+	        
+			
+			}}

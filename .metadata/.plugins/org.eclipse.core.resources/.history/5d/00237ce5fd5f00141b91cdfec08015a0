@@ -1,0 +1,85 @@
+package trainingselenium;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+public class MacysProfile {
+public class ExcelLogin {
+		
+		WebDriver driver;
+		Excel excel = new Excel();
+		String firstname =null;
+		String lastname  = null;
+		String mailingaddress = null;
+		String mailingaddress1= null;
+		String city=null;
+		String state=null;
+		String month=null;
+		String date=null;
+		String year=null;
+		
+		
+	@BeforeMethod
+		 public void launchBrowser(){
+		driver=new FirefoxDriver(); 
+		driver.manage().window().maximize();
+		
+}
+	
+
+@Test
+public void MacysProfile () throws Exception{
+	driver.get("https://www.macys.com/account/profile");
+	excel.setExcel("C:\\Users\\admin\\Desktop\\OCT\\TestFile.xlsx","Sheet1");
+	WebElement firstName = driver.findElement(By.id("firstName"));
+	WebElement lastName = driver.findElement(By.id("lastName"));
+	WebElement mailingAddress = driver.findElement(By.id("addressLine1"));
+	WebElement mailingAddress1 = driver.findElement(By.id("addressLine2"));
+	WebElement mainCity = driver.findElement(By.id("city"));
+	WebElement mainState = driver.findElement(By.id("state"));
+	WebElement currentMonth = driver.findElement(By.id("month"));
+	WebElement currentDate = driver.findElement(By.id("date"));
+	WebElement currentYear = driver.findElement(By.id("year"));
+	
+	for(int i=1;i<=3;i++){
+		
+		firstname=excel.getCellvalue1(i,0);
+		lastname=excel.getCellvalue1(i,1);
+		mailingaddress =excel.getCellvalue1(i, 2);
+		mailingaddress1=excel.getCellvalue1(i, 3);
+		city=excel.getCellvalue1(i, 4);
+		state=excel.getCellvalue1(i, 5);
+		month=excel.getCellvalue1(i,6);
+		date=excel.getCellvalue1(i,7 );
+		year=excel.getCellvalue1(i,8);
+		firstName.sendKeys(firstname);
+		lastName.sendKeys(lastname);
+		mailingAddress.sendKeys(mailingaddress);
+		mailingAddress1.sendKeys(mailingaddress1);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		mainCity.sendKeys(city);
+		mainState.sendKeys(state);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		currentMonth.sendKeys(month);
+		currentDate.sendKeys(date);
+		currentYear.sendKeys(year);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//button[@id='createProfileBtn']")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.navigate().to("https://www.macys.com/account/profile");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+			}
+	
+	}
+
+
+	}
+
+}

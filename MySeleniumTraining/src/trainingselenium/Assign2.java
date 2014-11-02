@@ -1,0 +1,71 @@
+package trainingselenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+import org.testng.annotations.Test;
+
+public class Assign2 {
+	private WebDriver driver;
+	 @Test
+		
+		public void testSignUpVerification() throws InterruptedException  
+		{
+			driver = new FirefoxDriver();
+	        driver.get("http://www.macys.com");
+	        driver.findElement(By.xpath("//a[@id='closeButton']")).click();
+	        WebElement web =driver.findElement(By.xpath("//a[@id='href_emailSignup']"));
+	        web.click();
+	        driver.findElement(By.name("firstName")).sendKeys("Prabhakar");
+	        driver.findElement(By.name("lastName")).sendKeys("Mishra");
+	        driver.findElement(By.name("EmailAddr")).sendKeys("prabhakar.alld@gmail.com");
+	        Thread.sleep(1000);
+	        driver.findElement(By.name("country")).sendKeys("Austria");
+	        
+	        //web.findElement(By.name("//form[@id='especials']/div/input[3]")).sendKeys("prabhakar.alld@gmail.com");
+	        driver.quit();
+		}
+
+	 @Test
+		
+		public void testSignUpVerificationChrome() throws InterruptedException  
+		{
+		 System.setProperty("webdriver.chrome.driver","C://Users//admin//chromedriver.exe");
+			driver = new ChromeDriver();
+	        driver.get("http://www.macys.com");
+	        driver.findElement(By.xpath("//a[@id='closeButton']")).click();
+	        WebElement web =driver.findElement(By.xpath("//a[@id='href_emailSignup']"));
+	        web.click();
+	        driver.findElement(By.name("firstName")).sendKeys("Prabhakar");
+	        driver.findElement(By.name("lastName")).sendKeys("Mishra");
+	        driver.findElement(By.name("EmailAddr")).sendKeys("prabhakar.alld@gmail.com");
+	        Thread.sleep(1000);
+	        driver.findElement(By.name("country")).sendKeys("Austria");
+	        
+	        //web.findElement(By.name("//form[@id='especials']/div/input[3]")).sendKeys("prabhakar.alld@gmail.com");
+	        driver.quit();
+		}
+	 @Test
+		
+		public void testSignUpVerificationIE() throws InterruptedException  
+		{
+		 System.setProperty("webdriver.ie.driver","C://Users//admin//IEDriverServer.exe");
+			WebDriver driver = new InternetExplorerDriver();
+	        driver.get("https://www.macys.com");
+	        driver.findElement(By.xpath("//a[@id='closeButton']")).click();
+	        WebElement web =driver.findElement(By.xpath("//a[@id='href_emailSignup']"));
+	        web.click();
+	        driver.findElement(By.name("firstName")).sendKeys("Prabhakar");
+	        driver.findElement(By.name("lastName")).sendKeys("Mishra");
+	        driver.findElement(By.name("EmailAddr")).sendKeys("prabhakar.alld@gmail.com");
+	        Thread.sleep(1000);
+	        driver.findElement(By.name("country")).sendKeys("Austria");
+	        
+	        //web.findElement(By.name("//form[@id='especials']/div/input[3]")).sendKeys("prabhakar.alld@gmail.com");
+	        driver.quit();
+		}
+}

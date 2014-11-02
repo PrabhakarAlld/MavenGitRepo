@@ -1,0 +1,27 @@
+package trainingselenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import org.testng.annotations.Test;
+
+public class Assign2 {
+	private WebDriver driver;
+	 @Test
+		
+		public void testSignUpVerification()  
+		{
+			driver = new FirefoxDriver();
+	        driver.get("http://www.macys.com");
+	        driver.findElement(By.xpath("//a[@id='closeButton']")).click();
+	        WebElement web =driver.findElement(By.xpath("//a[@id='href_emailSignup']"));
+	        web.click();
+	        web.findElement(By.name("firstName")).sendKeys("Prabhakar");
+	        web.findElement(By.name("lastName")).sendKeys("Mishra");
+	        web.findElement(By.name("//form[@id='especials']/div/input[3]")).sendKeys("prabhakar.alld@gmail.com");
+	        driver.quit();
+		}
+
+}

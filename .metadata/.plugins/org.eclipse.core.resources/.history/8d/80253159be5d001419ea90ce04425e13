@@ -1,0 +1,15 @@
+package trainingselenium;
+
+import org.testng.annotations.Test;
+
+public class Annotation 
+{
+	
+	@Test
+	
+	public void testGoogle()  {
+		
+	}
+	
+
+}

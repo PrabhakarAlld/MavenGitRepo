@@ -1,0 +1,27 @@
+package trainingselenium;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
+public class TestNGpractice 
+{
+	private WebDriver driver;
+	
+	@BeforeMethod
+	 
+    public void test1() {
+
+        System.out.println("Hi this is Selenium");
+
+    }
+	 @AfterMethod
+	 
+     public void test2() {
+
+         System.out.println("Hi this is automation");
+
+     }
+	
+
+}

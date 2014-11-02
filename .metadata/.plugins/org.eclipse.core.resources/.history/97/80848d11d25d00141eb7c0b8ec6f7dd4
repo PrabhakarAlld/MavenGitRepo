@@ -1,0 +1,8 @@
+package trainingselenium;
+
+import org.openqa.selenium.WebDriver;
+
+public class Assign2 {
+	private WebDriver driver;
+
+}

@@ -1,0 +1,22 @@
+package trainingselenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class Assignments 
+{
+	
+@Test
+	
+	public void testSignUpVerification()  
+	{
+		WebDriver driver = new FirefoxDriver();
+        driver.get("http://www.macys.com"); 
+        driver.findElement(By.xpath("//a[@id='closeButton']")).click();
+        driver.quit();
+	}
+
+}
