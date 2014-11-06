@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Regression Suite" parallel="tests">
+ <test name="Chrome test">
+  <classes>
+    <class name="com.company.testClasses.MacysProfile">
+   </class>
+  </classes>
+ </test> 
+</suite>

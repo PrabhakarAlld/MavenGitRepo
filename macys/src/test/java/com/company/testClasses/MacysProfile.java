@@ -1,0 +1,103 @@
+package com.company.testClasses;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.company.util.Excel;
+
+
+public class MacysProfile {
+
+		
+		WebDriver driver;
+		Excel excel = new Excel();
+		String firstname =null;
+		String lastname  = null;
+		String mailingaddress = null;
+		String mailingaddress1= null;
+		String city=null;
+		String state=null;
+		String month=null;
+		String date=null;
+		String year=null;
+		String gender=null;
+		String security=null;
+		
+		
+		
+	@BeforeMethod
+		 public void launchBrowser(){
+		driver=new FirefoxDriver(); 
+		driver.manage().window().maximize();
+		
+}
+	
+
+@Test
+public void testMacysProfile () throws Exception{
+	//System.out.println("Number of Row In Excel Sheet  "+ excel.getTotalNumberOfRows1());
+	driver.get("https://www.macys.com/account/profile");
+	excel.setExcel("src//test//resources//Data//TestFile.xls","Sheet1");
+	WebElement firstName = driver.findElement(By.id("firstName"));
+	WebElement lastName = driver.findElement(By.id("lastName"));
+	WebElement mailingAddress = driver.findElement(By.id("addressLine1"));
+	WebElement mailingAddress1 = driver.findElement(By.id("addressLine2"));
+	WebElement CusCity = driver.findElement(By.id("city"));
+	WebElement CusState = driver.findElement(By.id("state"));
+	WebElement currentMonth = driver.findElement(By.id("month"));
+	WebElement currentDate = driver.findElement(By.id("date"));
+	WebElement currentYear = driver.findElement(By.id("year"));
+	WebElement genderName = driver.findElement(By.id("gender"));
+	WebElement securityQuestion = driver.findElement(By.id("SecurityQna"));
+	System.out.println("Number of Row In Excel Sheet "+ excel.getTotalNumberOfRows());
+	//System.out.println("Number of column In Excel Sheet "+ excel.getTotalNumberOfColumn());*/
+	
+	for(int i=1;i<excel.getTotalNumberOfRows();i++)
+	{
+		
+		firstname=excel.getCellvalue1(i,0);
+		lastname=excel.getCellvalue1(i,1);
+		mailingaddress =excel.getCellvalue1(i, 2);
+		mailingaddress1=excel.getCellvalue1(i, 3);
+		city=excel.getCellvalue1(i, 4);
+		state=excel.getCellvalue1(i, 5);
+		month=excel.getCellvalue1(i,6);
+		date=excel.getCellvalue1(i,7 );
+		year=excel.getCellvalue1(i,8);
+		gender=excel.getCellvalue1(i,9);
+		security=excel.getCellvalue1(i,10);
+		firstName.clear();
+		firstName.sendKeys(firstname);
+		lastName.clear();
+		lastName.sendKeys(lastname);
+		mailingAddress.clear();
+		mailingAddress.sendKeys(mailingaddress);
+		mailingAddress1.clear();
+		mailingAddress1.sendKeys(mailingaddress1);
+		CusCity.clear();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		CusCity.sendKeys(city);
+		CusState.sendKeys(state);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		currentMonth.sendKeys(month);
+		currentDate.sendKeys(date);
+		currentYear.sendKeys(year);
+		genderName.sendKeys(gender);
+		securityQuestion.sendKeys(security);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//button[@id='createProfileBtn']")).click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		/*File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(srcFile,new File("Screen Shot//ProfileImage.jpg"));*/
+		
+		}
+	driver.quit();
+	}
+}
+
